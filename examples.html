@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MyUtils</title>
+</head>
+<body>
+
+<script src="myutils.js"></script>
+<script>
+	// bigIf([(if statement), (if statement)], succsss, fail) usage example
+	// Check each if independently, on false fire the fail callback with the iteration count of the failed statement
+	bigIf([(1 == 1), ('derp' == 'herp'), (true == true)], function(){
+		console.log('bigIf() Success! All checks were valid');
+	},
+	function(whichCheckFailed){
+		whichCheckFailed.equals({
+			1 : function(){
+				console.error('bigIf() Integers do not match');
+			},
+			2 : function(){
+				console.error('bigIf() Strings do not match');
+			},
+			3 : function(){
+				console.error('bigIf() Booleans do not match');
+			}
+		})
+	})
+
+
+	// makeFragment() usage example
+	// Input a string of HTML and prepare it for DOM insertion
+	var exampleHTML = '<div class="example" id="test"><h2 class="title">This is some example HTML</h2><p class="description">The output of this will be a document fragment</p></div>';
+	var exampleFrag = makeFragment(exampleHTML);
+	console.log('makeFragment()', exampleFrag);
+
+
+	// [{obj}, {obj}].searchObjArr(key, value) usage example
+	// Input an array of objects and search for matches (can be multiple)
+	var thisArrData = [{one : 'derp'}, {two : 'herp'}, {three : 'ferp', uwot : 'm9'}];
+	var queryMatch = thisArrData.searchObjArr('three', 'ferp');
+	console.log('searchObjArr()', queryMatch);
+
+
+	// String.ucfirst() usage example
+	// Capitalize the first letter of the string
+	var inputString = 'testzorz';
+	console.log('ucfirst()', {original : inputString, transformed : inputString.ucfirst()});
+
+
+	// String.equals() or Number.equals() usage example
+	// Alternative switch statement
+	var exampleString;
+	if(Date.now() % 2) exampleString = 'derp';
+	else exampleString = 'herp';
+	exampleString.equals({
+		derp : function(){
+			console.log('equals()', 'exampleString == derp');
+		},
+		herp : function(){
+			console.log('equals()', 'exampleString == herp');
+		}
+	})
+
+
+	// RNG.number(min, max) and RNG.pick(obj) usage example
+	// Random number functions using crypto.getRandomValues() (NOTE: limited browser support)(ALSO NOTE: Math.random() cannot be trusted, hence crypto)
+	var randomInt = RNG.number(1, 1000);
+	console.log('RNG.number(1, 1000)', randomInt);
+	// The RNG.pick() method randomly picks a key from the object, using the values you can set the odds
+	var food = {
+		"Pizza" 	: 3,
+		"Spagetti" 	: 1,
+		"Burgers" 	: 1,
+		"Sushi" 	: 2,
+		"Chinese" 	: 2,
+		"Pussy" 	: 1
+	}
+	// The current total of all the given odds is 10, "Pizza" has a 30% chance to be chosen, "Chinese" 20% and so on
+	var chosenFood = RNG.pick(food);
+	console.log("RNG.pick() ", "You should eat "+chosenFood+" tonight");
+
+
+	// events.on(), events.off() and events.fire() usage example
+	// Global custom event listeners, supports multiple .on() on the same name as demonstrated below
+	events.on('testzor', function(){
+		console.log('events.on()', 'testzor called');
+	})
+	events.on('derpz', function(){
+		console.log('events.on()', 'derpz called');
+	})
+	events.on('testzor', function(){
+		console.log('events.on()', 'second testzor event called');
+	})
+	setTimeout(function(){
+		events.fire('testzor');
+		events.fire('derpz');
+
+		events.off('testzor');
+		events.fire('testzor');
+	}, 1500);
+
+
+
+
+</script>
+</body>
+</html>
