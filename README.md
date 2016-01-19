@@ -5,19 +5,13 @@ In the examples file you'll find richer examples.
 
 
 ## Contents
-[bigIf](#bigif) Multi if statements.
-
-[equals](#equals) Alternative switch statement.
-
-[RNG](#rng) Methods using randon numbers.
-
-[events](#events) Micro global event utility.
-
-[makeFragment](#makefragment) HTML string to document fragment.
-
-[searchObjArr](#searchobjarr) Query an array of objects.
-
-[ucfirst](#ucfirst) Transform the first character of a string to uppercase.
+- [bigIf](#bigif) Multi if statements.
+- [equals](#equals) Alternative switch statement.
+- [RNG](#rng) Methods using randon numbers.
+- [events](#events) Micro global event utility.
+- [makeFragment](#makefragment) HTML string to document fragment.
+- [searchObjArr](#searchobjarr) Query an array of objects.
+- [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
 
 
 ### bigIf
