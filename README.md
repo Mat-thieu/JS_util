@@ -22,13 +22,13 @@ function(whichCheckFailed){
 Alternative for switch statements
 
 ```javascript
-'derp'.equals({
-	derp : function(){
+'chicken'.equals({
+	chicken : function(){
 		// Will call this case
-		console.log('equals()', 'exampleString == derp');
+		console.log("I'm a chicken!");
 	},
-	herp : function(){
-		console.log('equals()', 'exampleString == herp');
+	lion : function(){
+		console.log("I'm a lion!");
 	}
 })
 ```
@@ -63,7 +63,7 @@ Little global event utility, self explanatory.
 ```javascript
 // Attatches the event
 events.on('testzor', function(){
-	console.log('events.on()', 'testzor called');
+	console.log('testzor event called');
 })
 
 setTimeout(function(){
