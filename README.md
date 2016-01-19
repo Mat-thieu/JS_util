@@ -4,7 +4,16 @@ A few pretty useful utility methods, this repo will get updated regularly.
 In the examples file you'll find richer examples.
 
 
-## bigIf
+## Contents
+[bigIf](#bigif) Multi if statements.
+[equals](#equals) Alternative switch statement.
+[RNG](#rng) Methods using randon numbers.
+[events](#events) Micro global event utility.
+[makeFragment](#makefragment) HTML string to document fragment.
+[searchObjArr](#searchobjarr) Query an array of objects.
+[ucfirst](#ucfirst) Transform the first character of a string to uppercase.
+
+### bigIf
 Try multiple if statements, if one fails act accordingly.
 
 ```javascript
@@ -19,7 +28,7 @@ function(whichCheckFailed){
 ```
 
 
-## equals
+### equals
 Alternative for switch statements
 
 ```javascript
@@ -36,7 +45,7 @@ Alternative for switch statements
 **TIP: equal and bigIf's fail callback have some synergy**
 
 
-## RNG
+### RNG
 Random number methods using web.crypto() instead of Math.random().
 
 Regular random number method.
@@ -59,8 +68,8 @@ var chosenFood = RNG.pick(food);
 ```
 
 
-## events
-Little global event utility, self explanatory.
+### events
+Micro global event utility, self explanatory.
 ```javascript
 // Attatches the event
 events.on('testzor', function(){
@@ -81,7 +90,7 @@ setTimeout(function(){
 **NOTE: You can attatch multiple functions to the same event name.**
 
 
-## makeFragment
+### makeFragment
 Prepare a HTML string for DOM insertion.
 
 ```html
@@ -93,7 +102,7 @@ var exampleFrag = makeFragment(exampleHTML);
 ```
 
 
-## searchObjArr
+### searchObjArr
 Search an array filled with objects for objects that match the given key and value.
 
 ```javascript
@@ -102,7 +111,7 @@ var queryMatch = thisArrData.searchObjArr('three', 'ferp'); // {three : 'ferp', 
 ```
 
 
-## ucfirst
+### ucfirst
 Transform the first letter of the given string to uppercase.
 
 ```javascript
