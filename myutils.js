@@ -94,9 +94,9 @@ Eventor.prototype = {
 		if(name in this.store) delete this.store[name];
 		return this;
 	},
-	fire : function(name){
+	emit : function(name){
 		if(name in this.store) this.store[name].forEach(function(val, ind){val();});
-		else console.error('Eventor.fire() Event',name,'does not exist');
+		else console.error('Eventor.emit() Event',name,'does not exist');
 		return this;
 	}
 }

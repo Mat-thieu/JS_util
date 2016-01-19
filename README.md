@@ -80,10 +80,10 @@ events.on('testzor', function(){
 
 setTimeout(function(){
 	// Fires the event
-	events.fire('testzor');
+	events.emit('testzor');
 
 	// Removes the event and tries to fire it (which will not work, you'll get notified in the dev console)
-	events.off('testzor').fire('testzor');
+	events.off('testzor').emit('testzor');
 }, 1500);
 ```
 **NOTE: You can attatch multiple functions to the same event name.**

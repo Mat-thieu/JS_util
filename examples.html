@@ -96,9 +96,9 @@
 	})
 
 	setTimeout(function(){
-		events.fire('testzor').fire('derpz');
+		events.emit('testzor').emit('derpz');
 
-		events.off('testzor').fire('testzor');
+		events.off('testzor').emit('testzor');
 	}, 1500);
 
 
