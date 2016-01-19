@@ -1,4 +1,4 @@
-# My JavaScript Utilities
+# My JavaScript Utility Methods
 A few pretty useful utility methods, this repo will get updated regularly.
 In the examples file you'll find richer examples.
 
