@@ -84,7 +84,7 @@ setTimeout(function(){
 	// Removes the event
 	events.off('testzor');
 
-	// This will give an error
+	// This will notifty you that testzor does not exist
 	events.fire('testzor');
 }, 1500);
 ```
