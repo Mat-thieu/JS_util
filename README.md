@@ -1,5 +1,6 @@
 # My JavaScript Utilities
 A few pretty useful utility methods, this repo will get updated regularly.
+In the examples file you'll find richer examples.
 
 
 ## bigIf
