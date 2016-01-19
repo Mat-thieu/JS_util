@@ -8,7 +8,7 @@ In the examples file you'll find richer examples.
 - [bigIf](#bigif) Multi if statements.
 - [equals](#equals) Alternative switch statement.
 - [RNG](#rng) Methods using randon numbers.
-- [events](#events) Micro global event utility.
+- [Eventor](#events) Micro global event utility.
 - [makeFragment](#makefragment) HTML string to document fragment.
 - [searchObjArr](#searchobjarr) Query an array of objects.
 - [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
@@ -69,9 +69,10 @@ var chosenFood = RNG.pick(food);
 ```
 
 
-### events
+### Eventor
 Micro global event utility, self explanatory.
 ```javascript
+var events = new Eventor();
 // Attatches the event
 events.on('testzor', function(){
 	console.log('testzor event called');

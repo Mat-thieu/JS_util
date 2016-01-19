@@ -77,8 +77,10 @@ var RNG = {
 }
 
 
-var events = {
-	store : {},
+var Eventor = function(){
+	this.store = {};
+}
+Eventor.prototype = {
 	on : function(name, cb){
 		if(name in this.store) this.store[name].push(cb);
 		else{
@@ -91,6 +93,6 @@ var events = {
 	},
 	fire : function(name){
 		if(name in this.store) this.store[name].forEach(function(val, ind){val();});
-		else console.error('events.fire() Event',name,'does not exist');
+		else console.error('Eventor.fire() Event',name,'does not exist');
 	}
 }
