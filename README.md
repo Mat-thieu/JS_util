@@ -12,7 +12,7 @@ bigIf([(1 == 1), ('derp' == 'herp'), (true == true)], function(){
 },
 function(whichCheckFailed){
 	// whichCheckFailed == 2
-	console.log('Statements '+whichCheckFailed+' failed');
+	console.log('Statement '+whichCheckFailed+' failed');
 })
 ```
 
@@ -31,6 +31,7 @@ Alternative for switch statements
 	}
 })
 ```
+**TIP: equal and bigIf's fail callback have some synergy**
 
 
 ## RNG
@@ -63,11 +64,14 @@ Little global event utility, self explanatory.
 events.on('testzor', function(){
 	console.log('events.on()', 'testzor called');
 })
+
 setTimeout(function(){
 	// Fires the event
 	events.fire('testzor');
+
 	// Removes the event
 	events.off('testzor');
+
 	// This will give an error
 	events.fire('testzor');
 }, 1500);
@@ -88,11 +92,11 @@ var exampleFrag = makeFragment(exampleHTML);
 
 
 ## searchObjArr
-Search an array filled with objects for a specific key value pair.
+Search an array filled with objects for objects that match the given key and value.
 
 ```javascript
 var thisArrData = [{one : 'derp'}, {two : 'herp'}, {three : 'ferp', uwot : 'm9'}];
-var queryMatch = thisArrData.searchObjArr('three', 'ferp');
+var queryMatch = thisArrData.searchObjArr('three', 'ferp'); // {three : 'ferp', uwot : 'm9'}
 ```
 
 
