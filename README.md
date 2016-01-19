@@ -8,7 +8,7 @@ In the examples file you'll find richer examples.
 - [bigIf](#bigif) Multi if statements.
 - [equals](#equals) Alternative switch statement.
 - [RNG](#rng) Methods using randon numbers.
-- [Eventor](#events) Micro global event utility.
+- [Eventor](#eventor) Micro global event utility.
 - [makeFragment](#makefragment) HTML string to document fragment.
 - [searchObjArr](#searchobjarr) Query an array of objects.
 - [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
@@ -82,11 +82,8 @@ setTimeout(function(){
 	// Fires the event
 	events.fire('testzor');
 
-	// Removes the event
-	events.off('testzor');
-
-	// This will notifty you that testzor does not exist
-	events.fire('testzor');
+	// Removes the event and tries to fire it (which will not work, you'll get notified in the dev console)
+	events.off('testzor').fire('testzor');
 }, 1500);
 ```
 **NOTE: You can attatch multiple functions to the same event name.**

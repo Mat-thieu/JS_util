@@ -84,21 +84,21 @@
 	// events.on(), events.off() and events.fire() usage example
 	// Global custom event listeners, supports multiple .on() on the same name as demonstrated below
 	var events = new Eventor();
+
 	events.on('testzor', function(){
 		console.log('events.on()', 'testzor called');
 	})
-	events.on('derpz', function(){
+	.on('derpz', function(){
 		console.log('events.on()', 'derpz called');
 	})
-	events.on('testzor', function(){
+	.on('testzor', function(){
 		console.log('events.on()', 'second testzor event called');
 	})
-	setTimeout(function(){
-		events.fire('testzor');
-		events.fire('derpz');
 
-		events.off('testzor');
-		events.fire('testzor');
+	setTimeout(function(){
+		events.fire('testzor').fire('derpz');
+
+		events.off('testzor').fire('testzor');
 	}, 1500);
 
 

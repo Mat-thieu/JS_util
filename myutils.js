@@ -87,12 +87,16 @@ Eventor.prototype = {
 			this.store[name] = [];
 			this.store[name].push(cb);
 		}
+
+		return this;
 	},
 	off : function(name){
 		if(name in this.store) delete this.store[name];
+		return this;
 	},
 	fire : function(name){
 		if(name in this.store) this.store[name].forEach(function(val, ind){val();});
 		else console.error('Eventor.fire() Event',name,'does not exist');
+		return this;
 	}
 }
