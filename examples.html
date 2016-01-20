@@ -81,8 +81,8 @@
 	console.log("RNG.pick() ", "You should eat "+chosenFood+" tonight");
 
 
-	// events.on(), events.off() and events.fire() usage example
-	// Global custom event listeners, supports multiple .on() on the same name as demonstrated below
+	// event.on(), event.off() and event.fire() usage example
+	// Global custom event listeners, supports multiple .on() on the same event name as demonstrated below
 	var events = new Eventor();
 
 	events.on('testzor', function(){
@@ -102,6 +102,37 @@
 	}, 1500);
 
 
+	// iterate() usage example
+	// Loop over an array, object or string
+	var loopObj = {one : 'test', two : 'test', three : 'test'};
+	var loopArr = ['herp', 'derp', 'ferp'];
+	var loopStr = 'string';
+	iterate(loopObj, function(value, key){
+		console.log(value, key);
+	})
+	iterate(loopArr, function(value, index){
+		console.log(value, index);
+	})
+	iterate(loopStr, function(value, index){
+		console.log(value, index);
+	})
+
+
+	// contains() usage example
+	// Find the given value in a string or array
+	var containArr = ['one', 'two', 'three'];
+	var containStr = 'some random string';
+	if(containArr.contains('two')) console.log('Array contains "two"');
+	if(containStr.contains('uwot')) console.log('String contains "uwot"');
+	else console.log('String doesn\'t contain "uwot"');
+
+
+	// removeVal() usage example
+	// Find the given value and remove it from the array or string
+	var spliceArr = ['one', 'two', 'three'];
+	var spliceStr = 'some random string';
+	console.log(spliceArr.removeVal('two'));
+	console.log(spliceStr.removeVal('some'));
 
 
 </script>

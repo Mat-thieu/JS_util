@@ -100,3 +100,32 @@ Eventor.prototype = {
 		return this;
 	}
 }
+
+
+var iterate = function(inp, cb){
+	if(Array.isArray(inp) || typeof inp == 'string') for (var i = 0; i < inp.length; i++) cb(inp[i], i);
+	else for(key in inp) cb(inp[key], key);
+}
+
+
+var containsUtil = function(subject, query){
+	if(subject.indexOf(query) === -1) return false;
+	else return true;
+}
+Array.prototype.contains = function(query){return containsUtil(this, query);}
+String.prototype.contains = function(query){return containsUtil(this, query);}
+
+
+var removeValUtil = function(subject, query, type){
+	if(type == 'string') return subject.replace(query, '');
+	else{
+		var index = subject.indexOf(query);
+		if(index !== -1) {
+			subject.splice(index, 1);
+			return subject;
+		}
+		else return false;
+	}
+}
+Array.prototype.removeVal = function(query){return removeValUtil(this, query, 'array');}
+String.prototype.removeVal = function(query){return removeValUtil(this, query, 'string');}

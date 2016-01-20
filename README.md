@@ -11,6 +11,9 @@ In the examples file you'll find richer examples.
 - [Eventor](#eventor) Micro global event utility.
 - [makeFragment](#makefragment) HTML string to document fragment.
 - [searchObjArr](#searchobjarr) Query an array of objects.
+- [iterate](#iterate) Loop over a string, array or object.
+- [contains](#contains) Check if the array or string contains a value.
+- [removeVal](#removeval) Remove a value from the array or string.
 - [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
 
 
@@ -107,6 +110,52 @@ Search an array filled with objects for objects that match the given key and val
 ```javascript
 var thisArrData = [{one : 'derp'}, {two : 'herp'}, {three : 'ferp', uwot : 'm9'}];
 var queryMatch = thisArrData.searchObjArr('three', 'ferp'); // {three : 'ferp', uwot : 'm9'}
+```
+
+
+### iterate
+Loop over a string, object or array
+
+```javascript
+var loopObj = {one : 'test', two : 'test', three : 'test'};
+iterate(loopObj, function(value, key){
+	console.log(value, key);
+})
+
+var loopArr = ['herp', 'derp', 'ferp'];
+iterate(loopArr, function(value, index){
+	console.log(value, index);
+})
+
+var loopStr = 'string';
+iterate(loopStr, function(value, index){
+	console.log(value, index);
+})
+```
+
+
+### contains
+Check if an array or string contains the given value
+
+```javascript
+var containArr = ['one', 'two', 'three'];
+if(containArr.contains('two')) console.log('Array contains "two"');
+
+var containStr = 'some random string';
+if(containStr.contains('uwot')) console.log('String contains "uwot"');
+else console.log('String doesn\'t contain "uwot"');
+```
+
+
+### removeVal
+Remove the given value from an array or string
+
+```javascript
+var spliceArr = ['one', 'two', 'three'];
+console.log(spliceArr.removeVal('two'));
+
+var spliceStr = 'some random string';
+console.log(spliceStr.removeVal('some'));
 ```
 
 
