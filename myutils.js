@@ -38,17 +38,17 @@ String.prototype.ucfirst = function(){
 
 
 // String.equals() / Number.equals()
-var equalsUtil = function(self, args){
-	var keys = Object.keys(args[0]);
+var equalsUtil = function(self, options){
+	var keys = Object.keys(options);
 	keys.some(function(val, ind){
 		if(val == self){
-			args[0][val]();
+			options[val]();
 			return false;
 		}
 	})
 }
-String.prototype.equals = function(){equalsUtil(this, arguments);}
-Number.prototype.equals = function(){equalsUtil(this, arguments);}
+String.prototype.equals = function(options){equalsUtil(this, options);}
+Number.prototype.equals = function(options){equalsUtil(this, options);}
 
 
 var RNG = {
@@ -87,7 +87,6 @@ Eventor.prototype = {
 			this.store[name] = [];
 			this.store[name].push(cb);
 		}
-
 		return this;
 	},
 	off : function(name){
@@ -102,9 +101,9 @@ Eventor.prototype = {
 }
 
 
-var iterate = function(inp, cb){
-	if(Array.isArray(inp) || typeof inp == 'string') for (var i = 0; i < inp.length; i++) cb(inp[i], i);
-	else for(key in inp) cb(inp[key], key);
+var iterate = function(input, cb){
+	if(Array.isArray(input) || typeof input == 'string') for (var i = 0; i < input.length; i++) cb(input[i], i);
+	else for(key in input) cb(input[key], key);
 }
 
 
@@ -129,3 +128,20 @@ var removeValUtil = function(subject, query, type){
 }
 Array.prototype.removeVal = function(query){return removeValUtil(this, query, 'array');}
 String.prototype.removeVal = function(query){return removeValUtil(this, query, 'string');}
+
+
+// var Pi = function(accuracy){
+// 	  var x = 2;
+//       var n = 3; // the variable used to collect the estimation of pi
+//       var i = 2; // initial term
+//       while(i <= accuracy){
+//           if(i % 2 === 0) n += (4 / ( x * ( x + 1) * ( x + 2)));
+// 		  else n -= (4 / ( x * ( x + 1) * ( x + 2)));
+//           x += 2;
+//           i++;
+//       }
+
+//      return n;
+// }
+// console.log({'Pi (1000 iterations precision)' : Pi(1000)});
+

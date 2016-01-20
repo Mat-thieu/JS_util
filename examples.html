@@ -27,7 +27,6 @@
 		})
 	})
 
-
 	// makeFragment() usage example
 	// Input a string of HTML and prepare it for DOM insertion
 	var exampleHTML = '<div class="example" id="test"><h2 class="title">This is some example HTML</h2><p class="description">The output of this will be a document fragment</p></div>';
@@ -108,13 +107,13 @@
 	var loopArr = ['herp', 'derp', 'ferp'];
 	var loopStr = 'string';
 	iterate(loopObj, function(value, key){
-		console.log(value, key);
+		console.log('iterate()', value, key);
 	})
 	iterate(loopArr, function(value, index){
-		console.log(value, index);
+		console.log('iterate()', value, index);
 	})
 	iterate(loopStr, function(value, index){
-		console.log(value, index);
+		console.log('iterate()', value, index);
 	})
 
 
@@ -122,17 +121,17 @@
 	// Find the given value in a string or array
 	var containArr = ['one', 'two', 'three'];
 	var containStr = 'some random string';
-	if(containArr.contains('two')) console.log('Array contains "two"');
-	if(containStr.contains('uwot')) console.log('String contains "uwot"');
-	else console.log('String doesn\'t contain "uwot"');
+	if(containArr.contains('two')) console.log('contains()', 'Array contains "two"');
+	if(containStr.contains('uwot')) console.log('contains()', 'String contains "uwot"');
+	else console.log('contains()', 'String doesn\'t contain "uwot"');
 
 
 	// removeVal() usage example
 	// Find the given value and remove it from the array or string
 	var spliceArr = ['one', 'two', 'three'];
 	var spliceStr = 'some random string';
-	console.log(spliceArr.removeVal('two'));
-	console.log(spliceStr.removeVal('some'));
+	console.log('removeVal()', spliceArr.removeVal('two'));
+	console.log('removeVal()', spliceStr.removeVal('some'));
 
 
 </script>
