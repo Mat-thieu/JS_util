@@ -6,25 +6,25 @@ In the examples file you'll find richer examples.
 
 ## Contents
 
-Uncategorized methods.
+**Uncategorized methods.**
 - [bigIf](#bigif) Multi if statements.
 - [equals](#equals) Alternative switch statement.
 - [RNG](#rng) Methods using randon numbers.
 - [Eventor](#eventor) Micro global event utility.
 
 
-DOM utility methods
+**DOM utility methods**
 - [makeFragment](#makefragment) HTML string to document fragment.
 
 
-Array and Object methods
+**Array and Object methods**
 - [searchObjArr](#searchobjarr) Query an array of objects.
 - [iterate](#iterate) Loop over a string, array or object.
 - [contains](#contains) Check if the array or string contains a value.
 - [removeVal](#removeval) Remove a value from the array or string.
 
 
-String manipulation
+**String manipulation**
 - [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
 
 
