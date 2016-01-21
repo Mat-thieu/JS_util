@@ -6,10 +6,10 @@ In the examples file you'll find richer examples.
 
 ## Contents
 
-**Uncategorized methods.**
+**Uncategorized methods**
 - [bigIf](#bigif) Multi if statements.
 - [equals](#equals) Alternative switch statement.
-- [RNG](#rng) Methods using randon numbers.
+- [RNG](#rng) Methods using random numbers.
 - [Eventor](#eventor) Micro global event utility.
 
 
@@ -26,6 +26,7 @@ In the examples file you'll find richer examples.
 
 **String manipulation**
 - [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
+- [camelCase](#camelcase) Transform a string to camelCase.
 
 
 ### bigIf
@@ -176,6 +177,14 @@ Transform the first letter of the given string to uppercase.
 
 ```javascript
 'ducks'.ucfirst(); // Ducks
+```
+
+
+## camelCase
+Transform a string into camelCase (removing all "-", "_" and " " characters and replacing the character following the stripped character by uppercase)
+
+```javascript
+'weird-looking string with spaces and_some_underscores'.camelCase(); //weirdLookingStringWithSpacesAndSomeUnderscores
 ```
 
 
