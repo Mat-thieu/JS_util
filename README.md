@@ -181,7 +181,7 @@ Transform the first letter of the given string to uppercase.
 
 
 ## camelCase
-Transform a string into camelCase (removing all "-", "_" and " " characters and replacing the character following the stripped character by uppercase)
+Transform a string to camelCase (removing all "-", "_" and " " characters and replacing the character following the stripped character by uppercase)
 
 ```javascript
 'weird-looking string with spaces and_some_underscores'.camelCase(); //weirdLookingStringWithSpacesAndSomeUnderscores
