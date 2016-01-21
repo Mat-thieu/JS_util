@@ -5,15 +5,19 @@ In the examples file you'll find richer examples.
 
 
 ## Contents
+Uncategorized methods.
 - [bigIf](#bigif) Multi if statements.
 - [equals](#equals) Alternative switch statement.
 - [RNG](#rng) Methods using randon numbers.
 - [Eventor](#eventor) Micro global event utility.
+DOM utility methods
 - [makeFragment](#makefragment) HTML string to document fragment.
+Array and Object methods
 - [searchObjArr](#searchobjarr) Query an array of objects.
 - [iterate](#iterate) Loop over a string, array or object.
 - [contains](#contains) Check if the array or string contains a value.
 - [removeVal](#removeval) Remove a value from the array or string.
+String manipulation
 - [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
 
 
@@ -46,7 +50,7 @@ Alternative for switch statements
 	}
 })
 ```
-**TIP: equal and bigIf's fail callback have some synergy**
+**TIP: equal and bigIf's fail callback work reall well together.**
 
 
 ### RNG
@@ -78,7 +82,7 @@ Micro global event utility, self explanatory.
 var events = new Eventor();
 // Attatches the event
 events.on('testzor', function(){
-	console.log('testzor event called');
+	// Actions when event 'testzor' gets called
 })
 
 setTimeout(function(){
@@ -119,17 +123,18 @@ Loop over a string, object or array
 ```javascript
 var loopObj = {one : 'test', two : 'test', three : 'test'};
 iterate(loopObj, function(value, key){
-	console.log(value, key);
+	// value == each value in the object
+	// key == each key in the object
 })
 
 var loopArr = ['herp', 'derp', 'ferp'];
 iterate(loopArr, function(value, index){
-	console.log(value, index);
+	// value == each value in the array
 })
 
 var loopStr = 'string';
 iterate(loopStr, function(value, index){
-	console.log(value, index);
+	// value == each letter in the string
 })
 ```
 
@@ -148,14 +153,14 @@ else console.log('String doesn\'t contain "uwot"');
 
 
 ### removeVal
-Remove the given value from an array or string
+Remove the given value from an array or string, returns false if the value
 
 ```javascript
 var spliceArr = ['one', 'two', 'three'];
-console.log(spliceArr.removeVal('two'));
+spliceArr.removeVal('two'); // ['one', 'three']
 
 var spliceStr = 'some random string';
-console.log(spliceStr.removeVal('some'));
+spliceStr.removeVal('some'); // 'random string'
 ```
 
 
