@@ -8,6 +8,8 @@
 
 <script src="myutils.js"></script>
 <script>
+
+
 	// bigIf([(if statement), (if statement)], succsss, fail) usage example
 	// Check each if independently, on false fire the fail callback with the iteration count of the failed statement
 	bigIf([(1 == 1), ('derp' == 'herp'), (true == true)], function(){
@@ -23,6 +25,9 @@
 			},
 			3 : function(){
 				console.error('bigIf() Booleans do not match');
+			},
+			default : function(){
+				console.error('bigIf() Something went wrong real bad');
 			}
 		})
 	})
@@ -44,14 +49,19 @@
 	// String.equals() or Number.equals() usage example
 	// Alternative switch statement
 	var exampleString;
-	if(Date.now() % 2) exampleString = 'derp';
+	if(!(Date.now() % 2)) exampleString = 'derp';
+	else if(!(Date.now() % 5)) exampleString = 'asdsadsadasdsad';
 	else exampleString = 'herp';
+	console.log('equals()', 'example string == ', exampleString);
 	exampleString.equals({
 		derp : function(){
-			console.log('equals()', 'exampleString == derp');
+			console.log('equals()', 'Derp called!');
 		},
-		herp : function(){
-			console.log('equals()', 'exampleString == herp');
+		'derp, herp' : function(){
+			console.log('equals()', 'DERP HERP');
+		},
+		default : function(){
+			console.log('eqauls()', 'default case.');
 		}
 	})
 
@@ -90,7 +100,6 @@
 
 	setTimeout(function(){
 		events.emit('testzor').emit('derpz');
-
 		events.off('testzor').emit('testzor');
 	}, 1500);
 
@@ -136,7 +145,7 @@
 
 	// camelCase() usage example
 	// Camelcase a string
-	var camelInputString = 'equipment class name';
+	var camelInputString = 'equipment class name jwz_toch-he';
 	console.log('camelCase()' , {original : camelInputString, transformed : camelInputString.camelCase()});
 
 </script>

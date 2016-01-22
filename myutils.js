@@ -40,12 +40,27 @@ String.prototype.ucfirst = function(){
 // String.equals() / Number.equals()
 var equalsUtil = function(self, options){
     var keys = Object.keys(options);
-    keys.some(function(val, ind){
-        if(val == self){
-            options[val]();
-            return false;
+    var found = false;
+    keys.forEach(function(val, ind){
+        if(val.indexOf(',') == -1){
+            if(val == self){
+                options[val]();
+                found = true;
+            }
+        }
+        else{
+            var pieces = val.split(',');
+            pieces.forEach(function(pieceVal, pieceKey){
+                pieceVal = pieceVal.trim();
+                if(pieceVal == self){
+                    options[val]();
+                    found = true;
+                }
+            })
         }
     })
+
+    if(!found && 'default' in options) options['default']();
 }
 String.prototype.equals = function(options){equalsUtil(this, options);}
 Number.prototype.equals = function(options){equalsUtil(this, options);}
@@ -82,10 +97,18 @@ var Eventor = function(){
 }
 Eventor.prototype = {
     on : function(name, cb){
-        if(name in this.store) this.store[name].push(cb);
+        if(name in this.store) this.store[name]['callbacks'].push(cb);
         else{
-            this.store[name] = [];
-            this.store[name].push(cb);
+            this.store[name] = {callbacks : [], type : 'on'};
+            this.store[name]['callbacks'].push(cb);
+        }
+        return this;
+    },
+    once : function(name, cb){
+        if(name in this.store) this.store[name]['callbacks'].push(cb);
+        else{
+            this.store[name] = {callbacks : [], type : 'once'};
+            this.store[name]['callbacks'].push(cb);
         }
         return this;
     },
@@ -94,8 +117,13 @@ Eventor.prototype = {
         return this;
     },
     emit : function(name){
-        if(name in this.store) this.store[name].forEach(function(val, ind){val();});
-        else console.error('Eventor.emit() Event',name,'does not exist');
+        if(name in this.store){
+            this.store[name]['callbacks'].forEach(function(val, ind){
+                val();
+            });
+            if(this.store[name]['type'] == 'once') delete this.store[name];
+        }
+        else console.error('Eventor.emit() Event "'+name+'" does not exist');
         return this;
     }
 }

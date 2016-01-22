@@ -55,7 +55,14 @@ Alternative for switch statements
 	},
 	lion : function(){
 		console.log("I'm a lion!");
+	},
+	'chicken, lion' : function(){  // NOTE: Multi cases have to be a string, seperate the cases by a comma.
+		console.log("I'm an animal!");
+	},
+	default : function(){
+		console.log("Default case called!");
 	}
+}
 })
 ```
 **TIP: equal and bigIf's fail callback work reall well together.**
