@@ -121,6 +121,16 @@ setTimeout(function(){
 **NOTE: You can attatch multiple functions to the same event name.**
 
 
+### Repeat
+Fire a function in intervals until it hits the given amount, then fire the callback
+```javascript
+var repeatExample = function(){ console.log('Fired repeatExample()') }
+repeat(repeatExample, 5, 250, function(){
+	console.log('Done');
+})
+// Will fire repeatExample() 5 times with 250ms pauses, will fire the callback after 1250 ms.
+```
+
 ### makeFragment
 Prepare a HTML string for DOM insertion.
 

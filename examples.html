@@ -104,6 +104,14 @@
 	}, 1500);
 
 
+	// repeat(functionToRun, amount, intervalTime) usage example
+	// Fire a function in intervals until it hits the given amount, then fire the callback
+	var repeatExample = function(){ console.log('repeat()', 'Fired repeatExample()') }
+	repeat(repeatExample, 5, 250, function(){
+		console.log('repeat()', 'Done');
+	})
+
+
 	// iterate() usage example
 	// Loop over an array, object or string
 	var loopObj = {one : 'test', two : 'test', three : 'test'};

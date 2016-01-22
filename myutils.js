@@ -32,11 +32,6 @@ Array.prototype.searchObjArr = function(key, val){
 }
 
 
-String.prototype.ucfirst = function(){
-    return this.replace(this[0], this[0].toUpperCase());
-}
-
-
 // String.equals() / Number.equals()
 var equalsUtil = function(self, options){
     var keys = Object.keys(options);
@@ -63,7 +58,7 @@ var equalsUtil = function(self, options){
     if(!found && 'default' in options) options['default']();
 }
 String.prototype.equals = function(options){equalsUtil(this, options);}
-Number.prototype.equals = function(options){equalsUtil(this, options);}
+Number.prototype.equals = function(options){equalsUtil(this+'', options);}
 
 
 var RNG = {
@@ -72,8 +67,7 @@ var RNG = {
             var byteArray = window.crypto.getRandomValues(new Uint32Array(1))[0];
             var range = max - min + 1;
             var max_range = 2147483647;
-            if (byteArray >= Math.floor(max_range / range) * range)
-                return this.number(min, max);
+            if (byteArray >= Math.floor(max_range / range) * range) return this.number(min, max);
             return min + (byteArray % range);
         }
         else return window.crypto.getRandomValues(new Uint32Array(1))[0];
@@ -135,6 +129,22 @@ var iterate = function(input, cb){
 }
 
 
+var repeat = function(func, amount, duration, doneCB){
+    var iteration = 0;
+
+    var thisInterval =
+    setInterval(function(){
+        iteration++;
+
+        func();
+        if(iteration == amount){
+            clearInterval(thisInterval);
+            doneCB();
+        }
+    }, duration);
+}
+
+
 var containsUtil = function(subject, query){
     if(subject.indexOf(query) === -1) return false;
     else return true;
@@ -154,8 +164,8 @@ var removeValUtil = function(subject, query, type){
         else return false;
     }
 }
-Array.prototype.removeVal = function(query){return removeValUtil(this, query, 'array');}
-String.prototype.removeVal = function(query){return removeValUtil(this, query, 'string');}
+Array.prototype.removeVal = function(query){ return removeValUtil(this, query, 'array'); }
+String.prototype.removeVal = function(query){ return removeValUtil(this, query, 'string'); }
 
 
 String.prototype.camelCase = function(){
@@ -172,6 +182,28 @@ String.prototype.camelCase = function(){
 }
 
 
+String.prototype.ucfirst = function(){ return this.replace(this[0], this[0].toUpperCase()); }
+
+
+String.prototype.toDashed = function(){
+    var newStr = '';
+    for (var i = 0; i < this.length; i++) {
+        if(this[i] == '_' || this[i] == ' ') newStr += '-';
+        else newStr += this[i];
+    };
+    return newStr;
+}
+
+
+String.prototype.toUnderscore = function(){
+    var newStr = '';
+    for (var i = 0; i < this.length; i++) {
+        if(this[i] == '-' || this[i] == ' ') newStr += '_';
+        else newStr += this[i];
+    };
+    return newStr;
+}
+
 
 // var Pi = function(accuracy){
 //    var x = 2;
@@ -186,5 +218,4 @@ String.prototype.camelCase = function(){
 
 //      return n;
 // }
-// console.log({'Pi (1000 iterations precision)' : Pi(1000)});
 
