@@ -57,6 +57,7 @@ Alternative for switch statements
 		console.log("I'm a lion!");
 	},
 	'chicken, lion' : function(){  // NOTE: Multi cases have to be a string, seperate the cases by a comma.
+		// Will also call this case
 		console.log("I'm an animal!");
 	},
 	default : function(){
