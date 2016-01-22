@@ -142,6 +142,8 @@ var repeat = function(func, amount, duration, doneCB){
             doneCB();
         }
     }, duration);
+
+    return thisInterval;
 }
 
 

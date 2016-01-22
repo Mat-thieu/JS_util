@@ -11,6 +11,7 @@ In the examples file you'll find richer examples.
 - [equals](#equals) Alternative switch statement.
 - [RNG](#rng) Methods using random numbers.
 - [Eventor](#eventor) Micro global event utility.
+- [Repeat](#repeat) Extended interval function.
 
 
 **DOM utility methods**
@@ -130,6 +131,16 @@ repeat(repeatExample, 5, 250, function(){
 })
 // Will fire repeatExample() 5 times with 250ms pauses, will fire the callback after 1250 ms.
 ```
+
+Setting the amount to 0 will set amount to infinite, to clear the timeout you have to bind repeat to a variable.
+```javascript
+var thisRepeat = repeat(function(){console.log('No one shall stop me!')}, 0, 500, function(){
+	console.log('I will not get fired :c');
+})
+
+clearInterval(thisRepeat);
+```
+
 
 ### makeFragment
 Prepare a HTML string for DOM insertion.
