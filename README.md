@@ -122,7 +122,7 @@ setTimeout(function(){
 **NOTE: You can attatch multiple functions to the same event name.**
 
 
-### Repeat
+### repeat
 Fire a function in intervals until it hits the given amount, then fire the callback
 ```javascript
 var repeatExample = function(){ console.log('Fired repeatExample()') }
@@ -220,11 +220,26 @@ Transform the first letter of the given string to uppercase.
 ```
 
 
-## camelCase
+### camelCase
 Transform a string to camelCase (removing all "-", "_" and " " characters and replacing the character following the stripped character by uppercase)
 
 ```javascript
-'weird-looking string with spaces and_some_underscores'.camelCase(); //weirdLookingStringWithSpacesAndSomeUnderscores
+'weird-looking string with spaces and_some_underscores'.camelCase(); // weirdLookingStringWithSpacesAndSomeUnderscores
+```
+
+### toDashed
+Transform all spaces and underscores in a string to dashes
+
+```javascript
+'weird-looking string with spaces and_some_underscores'.toDashed(); // weird-looking-string-with-spaces-and-some-underscores
+```
+
+
+### toUnderscore
+Transform all spaces and dashes to underscores
+
+```javascript
+'weird-looking string with spaces and_some_underscores'.toUnderscore(); // weird_looking_string_with_spaces_and_some_underscores
 ```
 
 
