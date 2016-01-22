@@ -11,7 +11,7 @@ In the examples file you'll find richer examples.
 - [equals](#equals) Alternative switch statement.
 - [RNG](#rng) Methods using random numbers.
 - [Eventor](#eventor) Micro global event utility.
-- [Repeat](#repeat) Extended interval function.
+- [repeat](#repeat) Extended interval function.
 
 
 **DOM utility methods**
