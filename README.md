@@ -66,7 +66,7 @@ Alternative for switch statements
 }
 })
 ```
-**TIP: equal and bigIf's fail callback work reall well together.**
+**TIP: equal and bigIf's fail callback work really well together.**
 
 
 ### RNG
@@ -96,14 +96,23 @@ var chosenFood = RNG.pick(food);
 Micro global event utility, self explanatory.
 ```javascript
 var events = new Eventor();
-// Attatches the event
+
+// Attaches the event
 events.on('testzor', function(){
 	// Actions when event 'testzor' gets called
+});
+
+// Attach an event, once called it'll remove itself
+events.once('onceTest', function(){
+	// Actions
 })
 
 setTimeout(function(){
 	// Fires the event
 	events.emit('testzor');
+
+	// Second emit will fail
+	events.emit('onceTest').emit('onceTest');
 
 	// Removes the event and tries to fire it (which will not work, you'll get notified in the dev console)
 	events.off('testzor').emit('testzor');
