@@ -132,14 +132,16 @@ repeat(repeatExample, 5, 250, function(){
 // Will fire repeatExample() 5 times with 250ms pauses, will fire the callback after 1250 ms.
 ```
 
-Setting the amount to 0 will set amount to infinite, to clear the timeout you have to bind repeat to a variable.
+Setting the amount to 0 will set amount to infinite, to clear the interval you have to bind repeat to a variable.
 ```javascript
-var thisRepeat = repeat(function(){console.log('No one shall stop me!')}, 0, 500, function(){
+var thisRepeat =
+repeat(function(){console.log('No one shall stop me!')}, 0, 500, function(){
 	console.log('I will not get fired :c');
-})
+});
 
 clearInterval(thisRepeat);
 ```
+Setting the delay to 0 will simply loop the given method.
 
 
 ### makeFragment

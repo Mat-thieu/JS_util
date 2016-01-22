@@ -129,21 +129,26 @@ var iterate = function(input, cb){
 }
 
 
-var repeat = function(func, amount, duration, doneCB){
-    var iteration = 0;
+var repeat = function(func, amount, delay, doneCB){
+    if(delay == 0 && amount !== 0){
+        for (var i = 0; i < amount; i++) func();
+        doneCB();
+    }
+    else if(delay !== 0 && amount !== 0){
+        var iteration = 0;
+        var thisInterval =
+        setInterval(function(){
+            iteration++;
+            func();
+            if(iteration == amount){
+                clearInterval(thisInterval);
+                doneCB();
+            }
+        }, delay);
 
-    var thisInterval =
-    setInterval(function(){
-        iteration++;
-
-        func();
-        if(iteration == amount){
-            clearInterval(thisInterval);
-            doneCB();
-        }
-    }, duration);
-
-    return thisInterval;
+        return thisInterval;
+    }
+    else console.error('repeat()', 'Both delay and amount are set to 0, I refuse to loop forever! (or firing the callback, you scum)');
 }
 
 
