@@ -72,6 +72,7 @@ var RNG = {
             return this.number(min, max);
         return min + (byteArray[0] % range);
     },
+    // RNG.string([types], length);
     string : function(types, strLength){
         var charSet = '';
         types.forEach(function(val, ind){
@@ -97,7 +98,7 @@ var RNG = {
             }
         })
         var result = '';
-        var setLength = charSet.length;
+        var setLength = charSet.length-1;
         for (var i = 0; i < strLength; i++) {
             var rngNum = this.number(0, setLength);
             result += charSet[rngNum];
