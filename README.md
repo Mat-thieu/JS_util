@@ -78,6 +78,15 @@ Regular random number method.
 var randomInt = RNG.number(1, 1000); // Number between 1 and 1000
 ```
 
+Generate a random string.
+```javascript
+var randomStr = RNG.string(['letters', 'numbers'], 30); // Random string using letters and numbers, 30 chars long.
+```
+You can use the options **letters**, **numbers**, **special**, **all** or define your own set of characters.
+```javascript
+var randomStr = RNG.string(['!$@?', 'numbers'], 10) // Random string using the defined chars and numbers, 10 chars long.
+```
+
 Picks one of the given keys, the values define the odds.
 ```javascript
 var food = {

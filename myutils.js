@@ -62,15 +62,48 @@ Number.prototype.equals = function(options){equalsUtil(this+'', options);}
 
 
 var RNG = {
-    number : function(min, max){
-        if(min && max){
-            var byteArray = window.crypto.getRandomValues(new Uint32Array(1))[0];
-            var range = max - min + 1;
-            var max_range = 2147483647;
-            if (byteArray >= Math.floor(max_range / range) * range) return this.number(min, max);
-            return min + (byteArray % range);
-        }
-        else return window.crypto.getRandomValues(new Uint32Array(1))[0];
+    number : function(min, max) {
+        var byteArray = new Uint32Array(1);
+        window.crypto.getRandomValues(byteArray);
+
+        var range = max - min + 1;
+        var max_range = 2147483647;
+        if (byteArray[0] >= Math.floor(max_range / range) * range)
+            return this.number(min, max);
+        return min + (byteArray[0] % range);
+    },
+    string : function(types, strLength){
+        var charSet = '';
+        types.forEach(function(val, ind){
+            switch(val){
+                case 'numbers':
+                    charSet += '0123456789';
+                break;
+
+                case 'letters':
+                    charSet += 'abcdefghijklmnopqrstuvwxyz';
+                break;
+
+                case 'special':
+                    charSet += '!@#$%^&*()_-+=|}{[]<>,.?~';
+                break;
+
+                case 'all':
+                    charSet += '!@#$%^&*()_-+=|}{[]<>,.?~abcdefghijklmnopqrstuvwxyz0123456789';
+                break;
+
+                default:
+                    charSet += val;
+            }
+        })
+        var result = '';
+        var setLength = charSet.length;
+        for (var i = 0; i < strLength; i++) {
+            var rngNum = this.number(0, setLength);
+            result += charSet[rngNum];
+        };
+
+        return result;
     },
     pick : function(data){
         var maxInt = 0;

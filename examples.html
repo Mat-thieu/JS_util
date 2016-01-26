@@ -69,7 +69,11 @@
 	// RNG.number(min, max) and RNG.pick(obj) usage example
 	// Random number functions using crypto.getRandomValues() (NOTE: limited browser support)(ALSO NOTE: Math.random() cannot be trusted, hence crypto)
 	var randomInt = RNG.number(1, 1000);
-	console.log('RNG.number(1, 1000)', randomInt);
+	console.log('RNG.number(1, 1000)', {num : randomInt});
+	// RNG.string([charset], length) usage example
+	// Generate a random string
+	var randomStr = RNG.string(['letters', 'numbers'], 30);
+	console.log('RNG.string([letters, numbers], 30)', {str : randomStr});
 	// The RNG.pick() method randomly picks a key from the object, using the values you can set the odds
 	var food = {
 		"Pizza" 	: 3,
