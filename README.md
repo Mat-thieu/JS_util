@@ -177,15 +177,6 @@ var exampleFrag = makeFragment(exampleHTML);
 ```
 
 
-### searchObjArr
-Search an array filled with objects for objects that match the given key and value.
-
-```javascript
-var thisArrData = [{one : 'derp'}, {two : 'herp'}, {three : 'ferp', uwot : 'm9'}];
-var queryMatch = thisArrData.searchObjArr('three', 'ferp'); // {three : 'ferp', uwot : 'm9'}
-```
-
-
 ### iterate
 Loop over a string, object or array
 
