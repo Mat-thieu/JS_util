@@ -267,6 +267,23 @@ String.prototype.toUnderscore = function(){
 }
 
 
+String.prototype.filterType = function(){
+    var typeString = {
+        letters : '',
+        numbers : '',
+        special : ''
+    }
+    var isLetter = function(z) { return z.toLowerCase() != z.toUpperCase(); }
+    var isNumber = function(z) { return !isNaN(z); }
+    for (var i = 0; i < this.length; i++) {
+        if(isLetter(this[i])) typeString['letters'] += this[i];
+        else if(isNumber(this[i])) typeString['numbers'] += this[i];
+        else typeString['special'] += this[i];
+    };
+    return typeString;
+}
+
+
 // var Pi = function(accuracy){
 //    var x = 2;
 //       var n = 3; // the variable used to collect the estimation of pi

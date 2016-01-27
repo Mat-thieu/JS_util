@@ -258,3 +258,13 @@ Transform all spaces and dashes to underscores
 ```
 
 
+### filterType
+Filter a string for numbers, letters and special characters.
+
+```javascript
+'!^#*!@#t123%!@#&e45^&#@$678s$!@9%^#@t'.filterType() // {letters: "test", numbers: "123456789", special: "!^#*!@#%!@#&^&#@$$!@%^#@"}
+
+'!^#*!@#t123%!@#&e45^&#@$678s$!@9%^#@t'.filterType()['letters'] // test
+```
+
+
