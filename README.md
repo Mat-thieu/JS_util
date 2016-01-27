@@ -26,6 +26,9 @@ A few pretty useful (and random) utility methods
 **String manipulation**
 - [ucfirst](#ucfirst) Transform the first character of a string to uppercase.
 - [camelCase](#camelcase) Transform a string to camelCase.
+- [toDashed](#todashed) Transform all spaces and underscores in a string to dashes
+- [toUnderscore](#tounderscore) Transform all spaces and dashes in a string to underscores.
+- [filterType](#filtertype) Filter a string, allowing only some characters (e.g. letters, numbers, special)
 
 
 ### bigIf
