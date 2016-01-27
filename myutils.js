@@ -267,7 +267,7 @@ String.prototype.toUnderscore = function(){
 }
 
 
-String.prototype.filterType = function(){
+String.prototype.filterType = function(type){
     var typeString = {
         letters : '',
         numbers : '',
@@ -280,7 +280,8 @@ String.prototype.filterType = function(){
         else if(isNumber(this[i])) typeString['numbers'] += this[i];
         else typeString['special'] += this[i];
     };
-    return typeString;
+    if(type) return typeString[type];
+    else return typeString;
 }
 
 
