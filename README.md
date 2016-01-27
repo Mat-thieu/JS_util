@@ -17,7 +17,6 @@ A few pretty useful (and random) utility methods
 
 
 **Array and Object methods**
-- [searchObjArr](#searchobjarr) Query an array of objects.
 - [iterate](#iterate) Loop over a string, array or object.
 - [contains](#contains) Check if the array or string contains a value.
 - [removeVal](#removeval) Remove a value from the array or string.

@@ -23,15 +23,6 @@ var makeFragment = function(outerHTML){
 }
 
 
-Array.prototype.searchObjArr = function(key, val){
-    var matches = [];
-    this.forEach(function(thisVal, thisInd){
-        if(thisVal[key] == val) matches.push(thisVal);
-    })
-    return matches;
-}
-
-
 // String.equals() / Number.equals()
 var equalsUtil = function(self, options){
     var keys = Object.keys(options);
