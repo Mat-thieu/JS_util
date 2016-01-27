@@ -9,6 +9,7 @@ A few pretty useful (and random) utility methods
 - [equals](#equals) Alternative switch statement.
 - [RNG](#rng) Methods using random numbers.
 - [Eventor](#eventor) Micro global event utility.
+- [windowOrientation](#windoworientation) Get window orientation changes.
 - [repeat](#repeat) Extended interval function.
 
 
@@ -126,6 +127,20 @@ setTimeout(function(){
 }, 1500);
 ```
 **NOTE: You can attatch multiple functions to the same event name.**
+
+
+### windowOrientation
+Get current window orientation and orientation changes.
+```javascript
+windowOrientation({
+    portrait : function(){
+        console.log('PORTRAIT');
+    },
+    landscape : function(){
+        console.log('LANDSCAPE');
+    }
+})
+```
 
 
 ### repeat

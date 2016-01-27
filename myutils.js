@@ -148,6 +148,36 @@ Eventor.prototype = {
 }
 
 
+var windowOrientation = function(events){
+    var currentState;
+    var throttleEventCounter = 0;
+
+    var changeTo = function(thisOrientation){
+        currentState = thisOrientation;
+        events[thisOrientation]();
+        throttleEventCounter = 0;
+    }
+
+    var checkState = function(){
+        var windowWidth = window.outerWidth;
+        var windowHeight = window.outerHeight;
+        if(windowWidth >= windowHeight){
+            if(currentState !== 'landscape') changeTo('landscape');
+        }
+        else{
+            if(currentState !== 'portrait') changeTo('portrait');
+        }
+    }
+
+    checkState();
+
+    window.addEventListener("resize", function(){
+        throttleEventCounter++;
+        if(!(throttleEventCounter % 3) || throttleEventCounter == 1) checkState();
+    });
+}
+
+
 var iterate = function(input, cb){
     if(Array.isArray(input) || typeof input == 'string') for (var i = 0; i < input.length; i++) cb(input[i], i);
     else for(key in input) cb(input[key], key);

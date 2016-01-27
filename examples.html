@@ -101,6 +101,18 @@
 	}, 1500);
 
 
+	// windowOrientation() usage example
+	// Get window orientation changes (Simple width vs height matching), will notifty you of initial state, else it'll only notify you about state changes.
+	windowOrientation({
+	    portrait : function(){
+	        console.log('PORTRAIT');
+	    },
+	    landscape : function(){
+	        console.log('LANDSCAPE');
+	    }
+	})
+
+
 	// repeat(functionToRun, amount, intervalTime) usage example
 	// Fire a function in intervals until it hits the given amount, then fire the callback
 	var repeatExample = function(){ console.log('repeat()', 'Fired repeatExample()'); }
