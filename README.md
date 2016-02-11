@@ -1,5 +1,4 @@
-# My JavaScript Utility Methods
-A few pretty useful (and random) utility methods
+A couple of random methods in JS, some are pretty useful, some aren't
 
 
 ## Contents
