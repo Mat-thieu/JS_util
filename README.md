@@ -1,5 +1,5 @@
-# My JavaScript Utility Methods
-A few pretty useful (and random) utility methods
+A couple of random methods in JS, some are pretty useful, some are pretty damn far from useful.
+This is the result of an internship where they didn't give me much to do, so I started making random code!
 
 
 ## Contents
@@ -266,5 +266,7 @@ Filter a string for numbers, letters and special characters.
 
 '!^#*!@#t123%!@#&e45^&#@$678s$!@9%^#@t'.filterType('letters') // test
 ```
+
+
 
 

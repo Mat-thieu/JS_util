@@ -49,7 +49,7 @@ var equalsUtil = function(self, options){
     if(!found && 'default' in options) options['default']();
 }
 String.prototype.equals = function(options){equalsUtil(this, options);}
-Number.prototype.equals = function(options){equalsUtil(this+'', options);}
+Number.prototype.equals = function(options){equalsUtil(this.toString(), options);}
 
 
 var RNG = {
@@ -135,10 +135,11 @@ Eventor.prototype = {
         if(name in this.store) delete this.store[name];
         return this;
     },
-    emit : function(name){
+    emit : function(name, params){
+        params = params || false;
         if(name in this.store){
-            this.store[name]['callbacks'].forEach(function(val, ind){
-                val();
+            this.store[name]['callbacks'].forEach(function(cb, ind){
+                cb(params);
             });
             if(this.store[name]['type'] == 'once') delete this.store[name];
         }
@@ -180,6 +181,7 @@ var windowOrientation = function(events){
 
 var iterate = function(input, cb){
     if(Array.isArray(input) || typeof input == 'string') for (var i = 0; i < input.length; i++) cb(input[i], i);
+    else if(typeof input == 'number') for (var i = 0; i < parseInt(input); i++) { cb(i) };
     else for(key in input) cb(input[key], key);
 }
 
@@ -284,6 +286,85 @@ String.prototype.filterType = function(type){
     else return typeString;
 }
 
+
+Object.prototype.validate = function(cbs){
+    if(!('success' in cbs)) console.info('validate()', 'No success callback found');
+    if(!('fail' in cbs)) console.info('validate()', 'No fail callback found')
+    if(this.nodeName !== "FORM"){
+        console.error('validate()', 'Provided element is not a form');
+    }
+    else{
+        this.setAttribute('novalidate', true);
+
+        var ignoreTypes = ['submit', 'button'];
+
+        var validateByType = function(type, value){
+            var returnValue = {type : type, isValid : false};
+            switch(type){
+                case 'number':
+                    returnValue['isValid'] = (!isNaN(value));
+                break;
+                case 'text':
+                    returnValue['isValid'] = (value.toLowerCase() != value.toUpperCase())
+                break;
+                case 'url':
+                    var re_weburl = new RegExp(
+                          "^" +
+                            "(?:(?:https?|ftp)://)" +
+                            "(?:\\S+(?::\\S*)?@)?" +
+                            "(?:" +
+                              "(?!(?:10|127)(?:\\.\\d{1,3}){3})" +
+                              "(?!(?:169\\.254|192\\.168)(?:\\.\\d{1,3}){2})" +
+                              "(?!172\\.(?:1[6-9]|2\\d|3[0-1])(?:\\.\\d{1,3}){2})" +
+                              "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])" +
+                              "(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}" +
+                              "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))" +
+                            "|" +
+                              "(?:(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)" +
+                              "(?:\\.(?:[a-z\\u00a1-\\uffff0-9]-*)*[a-z\\u00a1-\\uffff0-9]+)*" +
+                              "(?:\\.(?:[a-z\\u00a1-\\uffff]{2,}))" +
+                              "\\.?" +
+                            ")" +
+                            "(?::\\d{2,5})?" +
+                            "(?:[/?#]\\S*)?" +
+                          "$", "i"
+                        );
+
+                    returnValue['isValid'] = re_weburl.test(value);
+                break;
+                case 'email':
+                    returnValue['isValid'] = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(value);
+                break;
+            }
+
+            return returnValue;
+        }
+
+        this.addEventListener('submit', function(e){
+            e.preventDefault();
+            var inputs = this.querySelectorAll('input');
+            var formIsInvalid = false;
+            var invalidInputs = [];
+            for (var i = 0; i < inputs.length; i++) {
+                var thisInpType = inputs[i].getAttribute('type');
+                // Check if it's not a button or submit type
+                if(ignoreTypes.includes(thisInpType)){
+                    var thisType = inputs[i].getAttribute('data-validate');
+                    var thisValue = inputs[i].value;
+                    // Later: ADD REQUIRED CHECK!!!!!!
+                    var validation = validateByType(thisType, thisValue);
+                    if(!validation['isValid']){
+                        formIsInvalid = true;
+                        invalidInputs.push({type : thisType, node : inputs[i]});
+                    }
+                }
+            };
+
+            if(formIsInvalid) cbs['fail'](invalidInputs);
+            else cbs['success'](this);
+        }.bind(this))
+    }
+}
 
 // var Pi = function(accuracy){
 //    var x = 2;
